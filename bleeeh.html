@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Classroom Style Cards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container2 {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .classes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            background: #4285F4;
+            color: #fff;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-footer {
+            padding: 10px;
+            background: #f1f1f1;
+            text-align: right;
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .classes {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container2" id="lectures">
+    <div class="title">Subjects</div>
+    <div class="classes">
+        <div class="card">
+            <div class="card-header">Mathematics</div>
+            <div class="card-body">Algebra, Calculus, Geometry.</div>
+            <div class="card-footer">View Details</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Physics</div>
+            <div class="card-body">Mechanics, Thermodynamics, Quantum Physics.</div>
+            <div class="card-footer">View Details</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Chemistry</div>
+            <div class="card-body">Organic, Inorganic, Physical Chemistry.</div>
+            <div class="card-footer">View Details</div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">Computer Science</div>
+            <div class="card-body">Programming, AI, Data Structures.</div>
+            <div class="card-footer">View Details</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
