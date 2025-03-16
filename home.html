@@ -15,7 +15,11 @@
         font-family: Arial, sans-serif;
         background-color: #0a1a2a;
         color: white;
-        overflow: hidden;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
 
     #particles-js {
@@ -25,7 +29,22 @@
         background: #0a1a2a;
         z-index: -1;
     }
+    ::-webkit-scrollbar {
+            width: 8px;
+        }
 
+        ::-webkit-scrollbar-track {
+            background: #0a1a2a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: gray;
+        }
     .container {
         display: flex;
         flex-direction: column;
@@ -35,58 +54,12 @@
         text-align: center;
     }
 
-    .title {
-        font-size: 3rem;
-        font-weight: bold;
-        opacity: 0;
-    }
-
-    .subtitle {
-        font-size: 1.5rem;
-        margin-top: 10px;
-        opacity: 0;
-    }
-
-    .btn {
-        margin-top: 20px;
-        padding: 12px 24px;
-        font-size: 1.2rem;
-        color: white;
-        background-color: #0d6efd;
-        text-decoration: none;
-        border-radius: 8px;
-        transition: 0.3s;
-        opacity: 0;
-    }
-
-    .btn:hover {
-        background-color: #0b5ed7;
-        transform: scale(1.05);
-    }
-
     #particles-js canvas {
         filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
     }
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Orbitron', sans-serif;
-    }
-
-    body {
-        background: radial-gradient(circle at center, rgba(18, 32, 47, 0.9), rgba(5, 10, 20, 1));
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-    }
     .about-container {
+        margin-top: 20px;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -94,71 +67,182 @@
         align-items: center;
         flex-wrap: wrap;
         position: relative;
+        height: auto;
+        width: 80vw;
     }
-    .about-card,
-    .team-card {
-        background: rgba(255, 255, 255, 0.1);
+    
+    .about-card {
+        cursor: pointer;
+        height: auto;
+        width: 70vw;
+        background: rgba(255, 255, 255, 0);
         border-radius: 15px;
         padding: 20px;
-        max-width: 400px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.2);
-        text-align: center;
+        backdrop-filter: blur(5px);
+        box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.055);
+        justify-content: center;
         transition: 0.3s;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.075);
+        text-align: justify;
+    }
+
+    .team-card {
+        cursor: pointer;
+        height: auto;
+        width: 70vw;
+        background: rgba(255, 255, 255, 0);
+        border-radius: 15px;
+        padding: 20px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.055);
+        justify-content: center;
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.075);
+        text-align: justify;
     }
 
     .about-card:hover,
     .team-card:hover {
         box-shadow: 0px 4px 20px rgba(0, 255, 255, 0.4);
     }
+
     .team-members {
         display: flex;
+        align-items: center;
         justify-content: space-around;
-        margin-top: 15px;
+        gap: 30px;
+        flex-wrap: wrap;
     }
 
     .member {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 10px;
-        border-radius: 10px;
-        width: 120px;
-        transition: 0.3s;
+        text-align: center;
     }
 
-    .member:hover {
-        background: rgba(255, 255, 255, 0.2);
-        box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.4);
+
+    .member h3 {
+        margin-bottom: 5px;
+        color: white;
     }
+
+    .member p {
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .member ul {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding: 0;
+    }
+
+    .member ul li {
+        list-style: none;
+    }
+
+    .member ul li a {
+        text-decoration: none;
+        color: cyan;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    .member ul li a:hover {
+        color: rgb(2, 156, 149);
+    }
+
     .navbar {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0);
-            padding: 10px 20px;
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-            display: flex;
-            gap: 30px;
-            transition: opacity 0.3s ease-in-out;
-            flex-wrap: wrap;
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0);
+        padding: 10px 20px;
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+        display: flex;
+        gap: 30px;
+        transition: opacity 0.3s ease-in-out;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 90%;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.3rem;
+        font-weight: 500;
+        transition: color 0.3s ease-in-out;
+        white-space: nowrap;
+    }
+
+    .navbar a:hover {
+        color: #00ffcc;
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            flex-wrap: nowrap;
+            gap: 10px;
             justify-content: center;
-            max-width: 90%;
         }
 
         .navbar a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 500;
-            transition: color 0.3s ease-in-out;
-            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .navbar {
+            flex-wrap: nowrap;
+            gap: 5px;
+            justify-content: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .team-members {
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .navbar a:hover {
-            color: #00ffcc;
+        .about-card,
+        .team-card {
+            width: 90vw;
+            /* padding: 15px; */
         }
+
+        .member {
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .about-container {
+            width: 100vw;
+            padding: 10px;
+        }
+
+        .about-card,
+        .team-card {
+            width: 90%;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .member h3 {
+            font-size: 1rem;
+        }
+
+        .member p {
+            font-size: 0.9rem;
+        }
+
+        .member ul li a {
+            font-size: 0.9rem;
+        }
+    }
 </style>
 
 <body>
@@ -167,24 +251,65 @@
         <a href="./home.html">Home</a>
         <a href="./classrooms.html">Classrooms</a>
         <a href="#">Attendance</a>
-        <a href="#">Chatbot</a>
+        <a href="#">LearnBot</a>
     </div>
     <div class="about-container">
         <div class="about-card">
             <h2>About Cheatcode Classroom</h2>
-            <p>Cheatcode Classroom is a futuristic platform designed to enhance learning with interactive features, AI assistance, and a stunning nebula-themed interface.</p>
+            <p>Cheatcode Classroom is a cutting-edge, futuristic platform designed to revolutionize the learning
+                experience. It combines interactive features, AI-powered assistance, and an immersive user interface to
+                create a seamless and engaging environment for students. Whether it’s real-time collaboration, automated
+                study guides, or personalized learning paths, Cheatcode Classroom leverages advanced technology to make
+                education more efficient and enjoyable. With a sleek, visually captivating design and an intuitive
+                layout, it provides an unparalleled experience that enhances both learning and productivity.</p>
         </div>
 
         <div class="team-card">
-            <h2>Meet the Team</h2>
+            <h2>Meet the Team!</h2>
             <div class="team-members">
                 <div class="member">
                     <h3>Anushka Yadav</h3>
                     <p>Frontend Developer</p>
+                    <ul>
+                        <li><a href="https://anushka-portofolio.vercel.app/"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-paperclip"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0z" />
+                                </svg> Portfolio</a></li>
+                        <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                                </svg> LinkedIn</a></li>
+                        <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                                </svg> GitHub</a></li>
+                    </ul>
                 </div>
                 <div class="member">
                     <h3>Unnat Malik</h3>
                     <p>Backend Developer</p>
+                    <ul>
+                        <li><a href="https://unnat-portofolio.vercel.app/"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="16" height="16" fill="currentColor" class="bi bi-paperclip"
+                                    viewBox="0 0 16 16">
+                                    <path
+                                        d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0z" />
+                                </svg>Portfolio</a></li>
+                        <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                                </svg> LinkedIn</a></li>
+                        <li><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                    fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                                </svg> GitHub</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -225,9 +350,7 @@
                 }
             }
         });
-
     </script>
-
 </body>
 
 </html>
