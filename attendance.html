@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #131b23, #0f373e);
+            padding: 20px;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .attendance-container {
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #1f1010;
+            color: white;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: #ddd;
+            border-radius: 8px;
+            margin-top: 10px;
+            height: 10px;
+            position: relative;
+        }
+
+        .progress {
+            height: 100%;
+            background: #011215;
+            border-radius: 8px;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0);
+            padding: 10px 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            display: flex;
+            gap: 30px;
+            transition: opacity 0.3s ease-in-out;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 90%;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .navbar a:hover {
+            color: #00ffcc;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: nowrap;
+                gap: 10px;
+                justify-content: center;
+            }
+
+            .navbar a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-wrap: nowrap;
+                gap: 5px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .attendance-container {
+                width: 100%;
+                padding: 15px;
+            }
+
+            th,
+            td {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="./home.html">Home</a>
+        <a href="./classrooms.html">Classrooms</a>
+        <a href="#">Attendance</a>
+        <a href="#">LearnBot</a>
+    </div>
+
+    <h2>Your Attendance</h2>
+
+    <div class="attendance-container">
+        <label for="filter">View Attendance:</label>
+        <select id="filter">
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="semester">Semester</option>
+        </select>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Attended</th>
+                    <th>Total</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-data">
+            </tbody>
+        </table>
+
+        <div class="progress-bar">
+            <div class="progress" id="progress-bar"></div>
+        </div>
+        <p id="attendance-percentage">Attendance: 0%</p>
+    </div>
+
+    <script>
+        const attendanceRecords = {
+            weekly: [
+                { subject: "Maths", attended: 4, total: 5 },
+                { subject: "CN", attended: 3, total: 5 },
+                { subject: "DAA", attended: 5, total: 5 }
+            ],
+            monthly: [
+                { subject: "Maths", attended: 15, total: 20 },
+                { subject: "CN", attended: 18, total: 20 },
+                { subject: "DAA", attended: 19, total: 20 }
+            ],
+            semester: [
+                { subject: "Maths", attended: 45, total: 60 },
+                { subject: "CN", attended: 50, total: 60 },
+                { subject: "DAA", attended: 55, total: 60 }
+            ]
+        };
+
+        function updateAttendance(filterType) {
+            const tableBody = document.getElementById("attendance-data");
+            tableBody.innerHTML = "";
+            let totalAttended = 0;
+            let totalClasses = 0;
+
+            attendanceRecords[filterType].forEach(record => {
+                let percentage = ((record.attended / record.total) * 100).toFixed(1);
+                totalAttended += record.attended;
+                totalClasses += record.total;
+
+                let row = `<tr>
+                    <td>${record.subject}</td>
+                    <td>${record.attended}</td>
+                    <td>${record.total}</td>
+                    <td>${percentage}%</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+
+            let overallPercentage = ((totalAttended / totalClasses) * 100).toFixed(1);
+            document.getElementById("attendance-percentage").innerText = `Attendance: ${overallPercentage}%`;
+            document.getElementById("progress-bar").style.width = `${overallPercentage}%`;
+        }
+
+        document.getElementById("filter").addEventListener("change", function () {
+            updateAttendance(this.value);
+        });
+
+        // Initialize with Weekly Attendance
+        updateAttendance("weekly");
+    </script>
+
+</body>
+
+</html>
