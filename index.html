@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cheatcode Classroom</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Tektur:wght@400..900&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -12,14 +16,31 @@
             font-family: 'Poppins', sans-serif;
             background: radial-gradient(circle at top, #0a0b1d, #090825);
             color: white;
-            height: 100vh;
+            /* height: 100vh; */
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #06111d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: gray;
         }
 
         .stars {
@@ -78,22 +99,29 @@
         }
 
         .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
             text-align: center;
             z-index: 10;
             padding: 20px;
             width: 90%;
+            height: 100vh;
         }
 
         .title {
-            font-size: 4vw;
+            font-size: 7vw;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-family: "Tektur", sans-serif;
         }
 
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 2.3rem;
             margin-top: 10px;
+            font-family: "Cookie", cursive;
         }
 
         .btn {
@@ -105,7 +133,6 @@
             text-decoration: none;
             border: 2px solid #00ffcc;
             border-radius: 8px;
-            /* border-image: linear-gradient(90deg, #a020f0, #00ffcc) 1; */
             transition: color 0.3s ease-in-out;
             display: inline-block;
             max-width: 200px;
@@ -135,7 +162,6 @@
             width: 100%;
         }
 
-
         .navbar {
             position: fixed;
             top: 20px;
@@ -151,6 +177,7 @@
             flex-wrap: wrap;
             justify-content: center;
             max-width: 90%;
+            z-index: 1000;
         }
 
         .navbar a {
@@ -168,11 +195,11 @@
 
         @media (max-width: 768px) {
             .title {
-                font-size: 6vw;
+                font-size: 7vw;
             }
 
             .subtitle {
-                font-size: 1rem;
+                font-size: 1.5rem;
             }
 
             .btn {
@@ -197,7 +224,7 @@
             }
 
             .subtitle {
-                font-size: 0.9rem;
+                font-size: 1.2rem;
             }
 
             .btn {
@@ -231,7 +258,6 @@
             });
         </script>
     </div>
-
     <div class="navbar">
         <a href="./home.html">Home</a>
         <a href="./classrooms.html">Classrooms</a>
@@ -240,11 +266,143 @@
     </div>
 
     <div class="title-container">
-        <div class="title">Welcome to Cheatcode Classroom</div>
-        <p class="subtitle">An AI-powered learning platform</p>
+        <div class="title">
+            EDUFLOW
+        </div>
+        <p class="subtitle">An innovative AI-powered learning platform designed to personalize education, enhance engagement, and streamline the learning experience.</p>
         <a href="./login.html" class="btn">Get Started</a>
     </div>
+    <style>
+        .midcontainer {
+            height: auto;
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
 
+        .usp {
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 300px;
+            text-align: center;
+            background-color: #00000074;
+            box-shadow: 0 0 10px rgba(245, 245, 245, 0.422);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .usp::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            transition: border-color 0.4s ease-in-out;
+        }
+
+        .usp:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 0;
+            background-color: #000000;
+        }
+
+        .usp:hover::before {
+            border-color: #00ffcc;
+        }
+
+        @media (max-width: 768px) {
+            .usp {
+                width: 90%;
+            }
+        }
+    </style>
+    <div class="midcontainer">
+        <div class="usp">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px"
+                fill="url(#gradientID)">
+                <defs>
+                    <linearGradient id="gradientID" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#a020f0" />
+                        <stop offset="100%" stop-color="#00ffcc" />
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M180-303q13-8 27.88-12.5Q222.77-320 240-320h40v-500h-40q-26 0-43 17.25T180-760v457Zm60 223q-50 0-85-35t-35-85v-560q0-50 35-85t85-35h290v60H340v500h260v-130h60v190H240q-25.5 0-42.75 17.25T180-200q0 25.5 17.25 42.75T240-140h540v-350h60v410H240Zm-60-223v-517 517Zm520-187q0-87.82 61.09-148.91T910-700q-87.82 0-148.91-61.09T700-910q0 87.82-61.09 148.91T490-700q87.82 0 148.91 61.09T700-490Z" />
+            </svg>
+            <h3>Modernized Learning Experience</h3>
+            <p>Seamlessly connects attendance tracking with smart study schedules and digital resources.</p>
+        </div>
+
+        <div class="usp">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px"
+                fill="url(#gradientID)">
+                <defs>
+                    <linearGradient id="gradientID" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#a020f0" />
+                        <stop offset="100%" stop-color="#00ffcc" />
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M160-120v-220q0-24.75 17.63-42.38Q195.25-400 220-400h520q24.75 0 42.38 17.62Q800-364.75 800-340v220H160Zm200-320q-83 0-141.5-58.5T160-640q0-83 58.5-141.5T360-840h240q83 0 141.5 58.5T800-640q0 83-58.5 141.5T600-440H360ZM220-180h520v-160H220v160Zm140-320h240q58.33 0 99.17-40.76 40.83-40.77 40.83-99Q740-698 699.17-739q-40.84-41-99.17-41H360q-58.33 0-99.17 40.76-40.83 40.77-40.83 99Q220-582 260.83-541q40.84 41 99.17 41Zm.18-110q12.82 0 21.32-8.68 8.5-8.67 8.5-21.5 0-12.82-8.68-21.32-8.67-8.5-21.5-8.5-12.82 0-21.32 8.68-8.5 8.67-8.5 21.5 0 12.82 8.68 21.32 8.67 8.5 21.5 8.5Zm240 0q12.82 0 21.32-8.68 8.5-8.67 8.5-21.5 0-12.82-8.68-21.32-8.67-8.5-21.5-8.5-12.82 0-21.32 8.68-8.5 8.67-8.5 21.5 0 12.82 8.68 21.32 8.67 8.5 21.5 8.5ZM480-180Zm0-460Z" />
+            </svg>
+            <h3>Personalized Study Companion</h3>
+            <p>Integrated AI chatbot to assist with attendance queries, reminders, and study tips.</p>
+        </div>
+
+        <div class="usp">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px"
+                fill="url(#gradientID)">
+                <defs>
+                    <linearGradient id="gradientID" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#a020f0" />
+                        <stop offset="100%" stop-color="#00ffcc" />
+                    </linearGradient>
+                </defs>
+                <path
+                    d="m423-329 277-277-43-43-234 234-121-121-42 42 163 165ZM180-120q-24.75 0-42.37-17.63Q120-155.25 120-180v-600q0-24.75 17.63-42.38Q155.25-840 180-840h205q5-35 32-57.5t63-22.5q36 0 63 22.5t32 57.5h205q24.75 0 42.38 17.62Q840-804.75 840-780v600q0 24.75-17.62 42.37Q804.75-120 780-120H180Zm0-60h600v-600H180v600Zm300-617q14 0 24.5-10.5T515-832q0-14-10.5-24.5T480-867q-14 0-24.5 10.5T445-832q0 14 10.5 24.5T480-797ZM180-180v-600 600Z" />
+            </svg>
+            <h3>Systematic Academic Planning</h3>
+            <p>Organizes attendance, assignments, and deadlines in one place for a structured study approach.</p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            gsap.from(".usp", {
+                opacity: 0,
+                y: 80,
+                stagger: 0.3,
+                delay: 0.2,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: ".usp",
+                    start: "top bottom",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+    </script>
+    <style>
+        .footer {
+            margin-top: 100px;
+        }
+
+        .footer-bottom {
+            width: 100vw;
+            margin-top: 100px;
+            padding: 5px;
+            background: #000000;
+            color: white;
+        }
+    </style>
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 Team CheatCode. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

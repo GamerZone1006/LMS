@@ -20,6 +20,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
+        flex-direction: column;
     }
 
     #particles-js {
@@ -116,6 +117,7 @@
 
     .member {
         text-align: center;
+        border: 1px solid red;
     }
 
 
@@ -255,7 +257,7 @@
     </div>
     <div class="about-container">
         <div class="about-card">
-            <h2>About Cheatcode Classroom</h2>
+            <h2>About:</h2>
             <p>Cheatcode Classroom is a cutting-edge, futuristic platform designed to revolutionize the learning
                 experience. It combines interactive features, AI-powered assistance, and an immersive user interface to
                 create a seamless and engaging environment for students. Whether it’s real-time collaboration, automated
@@ -314,6 +316,24 @@
             </div>
         </div>
     </div>
+    <style>
+        .footer {
+            margin-top: 100px;
+        }
+    
+        .footer-bottom {
+            width: 100vw;
+            margin-top: 100px;
+            padding: 5px;
+            background: #000000;
+            color: white;
+        }
+    </style>
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>&copy; 2025 Team CheatCode. All Rights Reserved.</p>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
